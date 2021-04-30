@@ -1,0 +1,75 @@
+ <x-master-layout>
+    
+    <section class="pt-5 pb-5 mt-0 align-items-center d-flex bg-dark" style="height:80vh; background-size: cover; background-image: url(https://picsum.photos/seed/korben/700/1000);">
+  
+        <div class="container-fluid">
+           <div class="row  justify-content-center align-items-center d-flex text-center h-100">
+             <div class="col-12 col-md-8  h-50 ">
+                 <h1 class="display-2  text-light mb-2 mt-5"><strong>Bienvenue sur OpenShop</strong> </h1>
+                 <p class="lead  text-light mb-5">Acceder aux meilleurs produits aux meilleurs prix sur le marché</p>
+                     <p><a href="https://blueprintsapp.launchaco.com/" class="btn bg-danger shadow-lg btn-round text-light btn-lg btn-rised">Passer votre commande ></a></p>
+                     
+                            
+             </div>
+              
+           </div>
+         </div>
+         </section>
+         <div class="container">
+
+             <div class="row">
+
+                 <div class="col-md-12">
+
+                    <h1 class="text-center">Nos Nouveaux Produits</h1>
+
+                    <hr>
+
+                    </div>
+
+                    <div class="row">                        
+
+                            @foreach ($produits as $produit)
+
+                                <div class="col-md-4 ">
+
+                                    <div class="card text-center mb-4">
+
+                                    <img class="card-img-top" src="{{ ($produit->image=='produit.png' OR
+
+                                     $produit->image==null)  ? 'https://picsum.photos/seed/picsum/200/150': 
+                                     
+                                     asset('storage/produits/'.$produit->image)}}" alt="" >
+
+                                         <div class="card-body">
+
+                                         <h4 class="card-title">{{ $produit->designation }}</h4>
+
+                                        <p class="card-text">{{ $produit->description }}</p>
+
+                                        <div class="text-center">
+
+                                            <a class="btn btn-primary btn-sm" href="{{ route('produits.show',$produit) }}"><i class="fas fa-shopping-cart"></i> Commander</a>
+
+                                        </div>
+                                
+
+                                    </div>                               
+
+                             </div>
+                        </div>
+                        
+                    @endforeach          
+                    
+
+                    <hr>
+
+                 </div>
+                
+             </div>
+
+
+
+         </div>
+         
+ </x-master-layout>
